@@ -14,12 +14,27 @@ describe('select()', () => {
     expect(select).to.be.a('function')
   })
 
-  describe('inputs', () => {
+  describe('input types', () => {
     it('should accept an array', () => {
       expect(() => { select(testData) }).to.not.throw()
     })
     it('should throw when not an array', () => {
       expect(() => { select('string') }).to.throw(errors.inputError)
+    })
+  })
+
+  describe('array weights', () => {
+    it('should throw when weights are missing', () => {
+      expect(() => { select([{ value: 5 }]) }).to.throw(errors.undefinedWeight)
+    })
+    it('should accept numbers', () => {
+      expect(() => { select([{ weight: 5 }]) }).to.not.throw()
+    })
+    it('should accept numerical string weights', () => {
+      expect(() => { select([{ weight: '5' }]) }).to.not.throw()
+    })
+    it('should NOT accept non-numerical string weights', () => {
+      expect(() => { select([{ weight: 'five' }]) }).to.throw(errors.invalidWeight)
     })
   })
 })
