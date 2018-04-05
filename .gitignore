@@ -41,9 +41,6 @@ docs
 
 # VSCode
 .vscode
-dev
 
-# Test Images
-*.png
-*.jpg
-*.jpeg
+# Test File
+test/demo.js
