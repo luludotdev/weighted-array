@@ -27,8 +27,8 @@ Both return one object from the array, with the whole object intact.
 const { select } = require('weighted-array')
 
 const array = [
-  weight: 1, name: 'Ben',
-  weight: 2, name: 'Jerry',
+  { weight: 1, name: 'Ben' },
+  { weight: 2, name: 'Jerry' },
 ]
 
 console.log(select(array)) // -> Will return Jerry twice as often as Ben
