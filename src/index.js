@@ -1,4 +1,5 @@
 const weightedRandom = require('weighted-random')
+const errors = require('./errors.js')
 
 /**
  * @typedef {Object} WeightedObject
@@ -11,6 +12,9 @@ const weightedRandom = require('weighted-random')
  * @returns {WeightedObject}
  */
 const select = input => {
+  // Argument Validation
+  if (!Array.isArray(input)) throw errors.inputError
+
   let weights = input.map(x => parseFloat(x.weight))
   let index = weightedRandom(weights)
   return input[index]
