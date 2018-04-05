@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/lolPants/weighted-array/issues"
   },
-  "homepage": "https://github.com/lolPants/weighted-array#readme"
+  "homepage": "https://github.com/lolPants/weighted-array#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  },
+  "dependencies": {
+    "weighted-random": "^0.1.0"
+  }
 }
