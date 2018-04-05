@@ -11,7 +11,7 @@ const weightedRandom = require('weighted-random')
  * @returns {WeightedObject}
  */
 const select = input => {
-  let weights = input.map(x => x.weight)
+  let weights = input.map(x => parseFloat(x.weight))
   let index = weightedRandom(weights)
   return input[index]
 }
