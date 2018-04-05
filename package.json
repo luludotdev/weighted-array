@@ -1,0 +1,26 @@
+{
+  "name": "weighted-array",
+  "version": "0.1.0",
+  "description": "Select a random element from a weighted array.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "eslint --color src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lolPants/weighted-array.git"
+  },
+  "keywords": [
+    "weighted",
+    "random",
+    "array",
+    "weight",
+    "weights"
+  ],
+  "author": "Jack Baron <me@jackbaron.com> (https://www.jackbaron.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lolPants/weighted-array/issues"
+  },
+  "homepage": "https://github.com/lolPants/weighted-array#readme"
+}
