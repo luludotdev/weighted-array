@@ -3,6 +3,8 @@ node_js:
   - "10"
   - "9"
   - "8"
-before_script:
-  - npm install -g npm
-install: npm ci
+install:
+  - npm i -g npm
+  - npm ci
+scripts:
+  - npm test
