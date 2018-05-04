@@ -3,6 +3,7 @@
 [![NPM downloads](https://img.shields.io/npm/dt/weighted-array.svg?maxAge=3600)](https://www.npmjs.com/package/weighted-array)
 [![Build status](https://travis-ci.org/lolPants/weighted-array.svg)](https://travis-ci.org/lolPants/weighted-array)
 [![Dependencies](https://img.shields.io/david/lolpants/weighted-array.svg?maxAge=3600)](https://david-dm.org/lolpants/weighted-array)
+[![Coverage Status](https://coveralls.io/repos/github/lolPants/weighted-array/badge.svg?branch=master)](https://coveralls.io/github/lolPants/weighted-array?branch=master)
 
 ##### Select a random element from a weighted array.
 
