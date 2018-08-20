@@ -8,8 +8,19 @@ const errors = require('../src/errors.js')
 
 // Test Data
 const checkValue = (expected, actual, margin) => (Math.abs(actual - expected) / expected) < margin
-const testData1 = [{ value: 'A', weight: 1 }, { value: 'B', weight: 3 }]
-const testData2 = [{ value: 'A', weight: 1 }, { value: 'B', weight: 2 }, { value: 'C', weight: 3 }]
+/**
+ * @type {Map<string, number>}
+ */
+const testMap1 = new Map()
+  .set('A', 1)
+  .set('B', 3)
+/**
+ * @type {Map<string, number>}
+ */
+const testMap2 = new Map()
+  .set('A', 1)
+  .set('B', 2)
+  .set('C', 3)
 
 describe('select()', () => {
   it('should be a function', () => {
@@ -17,26 +28,26 @@ describe('select()', () => {
   })
 
   describe('input types', () => {
-    it('should accept an array', () => {
-      expect(() => { select(testData1) }).to.not.throw()
+    it('should accept a Map', () => {
+      expect(() => { select(testMap1) }).to.not.throw()
     })
-    it('should throw when not an array', () => {
+
+    it('should throw when given a string', () => {
       expect(() => { select('string') }).to.throw(errors.inputError)
     })
   })
 
   describe('array weights', () => {
-    it('should throw when weights are missing', () => {
-      expect(() => { select([{ value: 5 }]) }).to.throw(errors.undefinedWeight)
-    })
     it('should accept numbers', () => {
-      expect(() => { select([{ weight: 5 }]) }).to.not.throw()
+      expect(() => { select(new Map([['a', 5]])) }).to.not.throw()
     })
+
     it('should accept numerical string weights', () => {
-      expect(() => { select([{ weight: '5' }]) }).to.not.throw()
+      expect(() => { select(new Map([['a', '5']])) }).to.not.throw()
     })
+
     it('should NOT accept non-numerical string weights', () => {
-      expect(() => { select([{ weight: 'five' }]) }).to.throw(errors.invalidWeight)
+      expect(() => { select(new Map([['a', 'five']])) }).to.throw(errors.invalidWeight)
     })
   })
 
@@ -44,7 +55,7 @@ describe('select()', () => {
     it('should work with test data', () => {
       let a = 0, b = 0
       for (let i = 0; i < 10000; i++) {
-        let { value } = select(testData1)
+        let value = select(testMap1)
         if (value === 'A') a++
         if (value === 'B') b++
       }
@@ -67,11 +78,11 @@ describe('selectUnique()', () => {
   })
 
   it('should produce unique values', () => {
-    let random = selectUnique(testData2)
+    let random = selectUnique(testMap2)
     let results = []
 
     for (let i = 0; i < 500; i++) {
-      let { value } = random.next().value
+      let value = random.next().value
       results = [...results, value]
     }
 
