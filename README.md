@@ -4,6 +4,7 @@
 [![Build status](https://travis-ci.org/lolPants/weighted-array.svg)](https://travis-ci.org/lolPants/weighted-array)
 [![Dependencies](https://img.shields.io/david/lolpants/weighted-map.svg?maxAge=3600)](https://david-dm.org/lolpants/weighted-map)
 [![Coverage Status](https://coveralls.io/repos/github/lolPants/weighted-array/badge.svg?branch=master)](https://coveralls.io/github/lolPants/weighted-array?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FlolPants%2Fweighted-array.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FlolPants%2Fweighted-array?ref=badge_shield)
 
 ##### Select a random element from a weighted array.
 
@@ -36,3 +37,7 @@ console.log(select(map)) // -> Will return 'jerry' twice as often as 'ben'
 
 ## ❤ Thanks
 * [weighted-random](https://www.npmjs.com/package/weighted-random)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FlolPants%2Fweighted-array.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FlolPants%2Fweighted-array?ref=badge_large)
