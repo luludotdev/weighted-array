@@ -1,6 +1,6 @@
 {
   "name": "weighted-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Select a random element from a Map<element, weight>",
   "main": "src/index.js",
   "scripts": {
@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/lolPants/weighted-array#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "eslint": "^5.4.0",
+    "eslint": "^5.13.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2"
+    "nyc": "^13.2.0"
   },
   "dependencies": {
     "weighted-random": "^0.1.0"
