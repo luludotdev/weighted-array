@@ -1,7 +1,7 @@
 import { ERR_INPUT_TYPE, ERR_INVALID_WEIGHT } from './errors'
 import { weightedRandom } from './random'
 
-type WeightedMap<T> = Map<T, number | string>
+export type WeightedMap<T> = Map<T, number | string>
 
 export const select: <T>(input: WeightedMap<T>) => T = input => {
   // Argument Validation
