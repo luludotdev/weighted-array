@@ -1,11 +1,13 @@
+dist: xenial
 language: node_js
+
 node_js:
   - "10"
-  - "9"
   - "8"
-install:
-  - npm i -g npm
-  - npm ci
+
+cache: yarn
+
 scripts:
-  - npm test
-after_success: npm run coverage
+  - yarn test
+
+after_success: yarn run coverage
