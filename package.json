@@ -49,6 +49,10 @@
   },
   "ava": {
     "compileEnhancements": false,
+    "files": [
+      "test/**/*.ts",
+      "!test/helpers.ts"
+    ],
     "extensions": [
       "ts"
     ],
