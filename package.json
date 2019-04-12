@@ -13,6 +13,7 @@
   "scripts": {
     "prepublishOnly": "npm run test && npm run build",
     "test": "npm run check && npm run lint",
+    "ava": "nyc --reporter=html --reporter=text ava",
     "check": "npm run build -- --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prebuild": "rimraf lib",
@@ -36,11 +37,28 @@
   "homepage": "https://github.com/lolPants/weighted-array#readme",
   "devDependencies": {
     "@types/node": "^11.13.4",
+    "ava": "^1.4.1",
+    "nyc": "^13.3.0",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
+    "ts-node": "^8.0.3",
     "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.4.3"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ]
   }
 }
