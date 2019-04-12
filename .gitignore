@@ -44,3 +44,6 @@ docs
 
 # Test File
 test/demo.js
+
+# Compiled TypeScript
+lib/

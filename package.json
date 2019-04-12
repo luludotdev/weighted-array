@@ -1,18 +1,27 @@
 {
   "name": "weighted-map",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Select a random element from a Map<element, weight>",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "lint": "eslint --color src/",
-    "mocha": "nyc --reporter=html --reporter=text mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "npm run lint && npm run mocha"
+    "prepublishOnly": "npm run test && npm run build",
+    "test": "npm run check && npm run lint",
+    "check": "npm run build -- --noEmit",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "prebuild": "rimraf lib",
+    "build": "tsc --sourceMap",
+    "watch": "tsc --watch",
+    "dev": "npm run watch -- --sourceMap"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lolPants/weighted-array.git"
-  },
+  "repository": "git@github.com:lolPants/weighted-array.git",
+  "author": "Jack Baron <jackmbaron@gmail.com>",
   "keywords": [
     "weighted",
     "random",
@@ -20,20 +29,18 @@
     "weight",
     "weights"
   ],
-  "author": "Jack Baron <me@jackbaron.com> (https://www.jackbaron.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lolPants/weighted-array/issues"
   },
   "homepage": "https://github.com/lolPants/weighted-array#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.13.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.2.0"
-  },
-  "dependencies": {
-    "weighted-random": "^0.1.0"
+    "@types/node": "^11.13.4",
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.3"
   }
 }
