@@ -1,4 +1,4 @@
-export const weightedRandom = (weights: number[]) => {
+export const weightedRandom = (weights: number[] = []) => {
   let totalWeight = 0
   let i
   let random
