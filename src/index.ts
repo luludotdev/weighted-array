@@ -22,11 +22,13 @@ export const select: <T>(input: WeightedMap<T>) => T = input => {
 }
 
 export const selectUnique = function*<T>(
-  input: WeightedMap<T>
+  input: WeightedMap<T>,
+  maxIterations?: number
 ): IterableIterator<T> {
   let prev: T | undefined
 
-  while (true) {
+  let iterations = 0
+  while (maxIterations === undefined || iterations < maxIterations) {
     // Pick a new value
     let val = select(input)
 
@@ -38,5 +40,6 @@ export const selectUnique = function*<T>(
     // Set the new previous value and return
     prev = val
     yield val
+    iterations++
   }
 }

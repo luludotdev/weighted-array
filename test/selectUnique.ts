@@ -23,3 +23,18 @@ test('produces unique values', t => {
 
   return t.is(dupes, false)
 })
+
+test('respects max iterations', t => {
+  const limit = 10
+  const random = selectUnique(testMap2, limit)
+  let results: Array<string | undefined> = []
+
+  for (let i = 0; i < limit + 100; i++) {
+    const value = random.next().value
+    results = [...results, value]
+  }
+
+  const values = results.filter(x => x !== undefined)
+  t.is(random.next().done, true)
+  return t.is(values.length, limit)
+})
