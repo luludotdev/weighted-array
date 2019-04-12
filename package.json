@@ -12,8 +12,9 @@
   ],
   "scripts": {
     "prepublishOnly": "npm run test && npm run build",
-    "test": "npm run check && npm run lint",
+    "test": "npm run check && npm run lint && npm run ava",
     "ava": "nyc --reporter=html --reporter=text ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "check": "npm run build -- --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prebuild": "rimraf lib",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@types/node": "^11.13.4",
     "ava": "^1.4.1",
+    "coveralls": "^3.0.3",
     "nyc": "^13.3.0",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
