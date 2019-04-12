@@ -3,6 +3,10 @@ import { weightedRandom } from './random'
 
 export type WeightedMap<T> = Map<T, number | string>
 
+/**
+ * Select a random element from a weighted Map
+ * @param input Array of Weighted Objects
+ */
 export const select: <T>(input: WeightedMap<T>) => T = input => {
   // Argument Validation
   if (!(input instanceof Map)) throw ERR_INPUT_TYPE
@@ -21,6 +25,10 @@ export const select: <T>(input: WeightedMap<T>) => T = input => {
   return [...input.keys()][index]
 }
 
+/**
+ * Select a unique random element from a weighted Map sequentially
+ * @param input Array of Weighted Objects
+ */
 export const selectUnique = function*<T>(
   input: WeightedMap<T>,
   maxIterations?: number
