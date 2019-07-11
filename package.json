@@ -1,6 +1,6 @@
 {
   "name": "weighted-map",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Select a random element from a Map<element, weight>",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
