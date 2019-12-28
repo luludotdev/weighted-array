@@ -47,3 +47,4 @@ test/demo.js
 
 # Compiled TypeScript
 lib/
+esm/

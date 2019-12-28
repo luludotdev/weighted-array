@@ -2,25 +2,28 @@
   "name": "weighted-map",
   "version": "0.3.1",
   "description": "Select a random element from a Map<element, weight>",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "types": "./lib/index.d.ts",
+  "sideEffects": false,
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "esm/**/*"
   ],
   "scripts": {
-    "prepublishOnly": "npm run test && npm run build",
-    "test": "npm run check && npm run lint && npm run ava",
+    "prepublishOnly": "yarn run test && yarn run build",
+    "test": "yarn run check && yarn run lint && yarn run ava",
     "ava": "nyc --reporter=html --reporter=text ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "check": "npm run build -- --noEmit",
+    "check": "yarn run compile --noEmit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "prebuild": "rimraf lib",
-    "build": "tsc --sourceMap",
-    "watch": "tsc --watch",
-    "dev": "npm run watch -- --sourceMap"
+    "prebuild": "rimraf lib esm",
+    "build:cjs": "ncc build ./src/index.ts -o lib -m",
+    "build:esm": "yarn run compile --module ES6 --outDir esm",
+    "build": "yarn run build:cjs && yarn run build:esm",
+    "compile": "tsc",
+    "watch": "yarn run compile --watch",
+    "dev": "yarn run watch  --sourceMap"
   },
   "repository": "git@github.com:lolPants/weighted-array.git",
   "author": "Jack Baron <jackmbaron@gmail.com>",
@@ -37,17 +40,18 @@
   },
   "homepage": "https://github.com/lolPants/weighted-array#readme",
   "devDependencies": {
-    "@types/node": "^11.13.4",
-    "ava": "^1.4.1",
-    "coveralls": "^3.0.3",
-    "nyc": "^13.3.0",
-    "prettier": "^1.16.4",
-    "rimraf": "^2.6.3",
-    "ts-node": "^8.0.3",
-    "tslint": "^5.15.0",
+    "@types/node": "^13.1.1",
+    "@zeit/ncc": "^0.20.5",
+    "ava": "^2.4.0",
+    "coveralls": "^3.0.9",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.4.3"
+    "tslint-plugin-prettier": "^2.1.0",
+    "typescript": "^3.7.4"
   },
   "ava": {
     "compileEnhancements": false,
